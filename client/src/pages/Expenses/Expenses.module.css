@@ -1,0 +1,93 @@
+.header{
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+
+.header input{
+  width: 300px;
+  height: 30px;
+  outline: none;
+  border-radius: 30px;
+  padding: 15px;
+  padding-left: 25px;
+}
+.searchIcon{
+  position: relative;
+  left: 30px;
+  top: 10px;
+  opacity: 0.3;
+}
+.header select{
+  width: 100px;
+  margin-left: 20px;
+  height: 30px;
+  outline: none;
+  border-radius: 30px;
+  padding: 5px;
+}
+.header button{
+  background-color:rgba(102, 38, 113, 1);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.inner-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.table-section {
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.th, .td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+.th, .td, .tr {
+  text-align: left;
+  padding: 8px;
+}
+
+.th {
+  background-color: rgba(140, 194, 247,0.5);
+  color: black;
+}
+.dtDescription{
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  padding: 8px;
+  width: 300px;
+}
+.delete{
+  color: grey;
+  border: 1px solid rgba(113, 108, 108,0.4);
+  position: relative;
+  left: 20px;
+}
+
+.edit{
+  color: grey;
+  border: 1px solid rgba(113, 108, 108,0.4);
+}

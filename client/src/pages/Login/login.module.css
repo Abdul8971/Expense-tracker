@@ -1,0 +1,138 @@
+/* General container styles */
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background-color: white;
+  position: absolute;
+  top: 0;
+}
+
+/* First container styles */
+.first-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo img {
+  width: 200px;
+}
+
+.logo h2 {
+  font-size: 16px;
+}
+
+.inner-container {
+  width: 400px;
+  height: 550px;
+  padding: 30px;
+  /* background-color: #a99d9d; */
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2);
+
+}
+
+/* Second container styles */
+.second-container {
+  flex: 1;
+  background-color: white;
+}
+
+.second-container img {
+  border-radius: 10px;
+  width: 99%;
+  height: 99vh;
+  margin-top: 3px;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.8);
+
+}
+
+/* Form styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.form-input input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background-color: #fefdfd;
+  height: 40px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2);
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  color: #a99d9d;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+input::placeholder {
+  color: rgba(169, 157, 157, 1);
+  font-size: 14px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.form-btn {
+  width: 100%;
+  height: 40px;
+  margin-top: 50px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  background-color: rgba(234, 4, 126, 1);
+  cursor: pointer;
+
+}
+.signup{
+  display: flex;
+  margin-top: 20px;
+  margin-left: 5px;
+}
+.signup .signUpLink{
+  color: blue;
+  text-decoration: none;
+  margin-left: 5px;
+}
+.backBtn{
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+@media (max-width: 700px) {
+  .inner-container{
+    width: 350px;
+  }
+  .second-container{
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .second-container{
+    display: none;
+  }
+  
+}

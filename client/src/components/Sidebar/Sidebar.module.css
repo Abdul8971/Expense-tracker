@@ -1,0 +1,44 @@
+.sideBar {
+  background-color: rgba(236, 233, 233,0.2);
+  width: 300px;
+  height: 86vh;
+  color: black; 
+  display: flex;
+  flex-direction: column; 
+  padding-top: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.link {
+  width: 100%; /* Full width of sidebar */
+  height: 70px;
+  display: flex;
+  align-items: center; 
+  padding-left: 10px; 
+  margin-bottom: 10px; 
+  text-decoration: none; 
+  color: black; 
+}
+
+.link img {
+  height: 40px;
+  width: 30px;
+  margin-left: 30px;
+  margin-right: 20px;
+}
+a{
+  margin-bottom: 25px;
+  text-decoration: none;
+  color: black;
+}
+.active{
+  /* background-color: rgba(244, 237, 175, 1); */
+  background-color: rgba(140, 194, 247,0.5);
+  border-radius: 10px;
+}
+.link .budget{
+  width: 40px;
+  height: 50px;
+  margin-left: 25px;
+}

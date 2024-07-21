@@ -1,0 +1,10 @@
+.content {
+    width: 100%;
+    height: 84vh;
+    padding: 5px;
+    margin: 15px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px #aaaaaa;
+    overflow: scroll;
+  }
+  
