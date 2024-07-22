@@ -22,7 +22,8 @@ A MERN stack application for tracking and managing expenses.
    ```bash
    git clone https://github.com/Abdul8971/Expense-tracker.git
    cd your-repo-name
-2.set your environemnt variable
+2.*Backend*
+   set your environemnt variable
   -JWT_SECRET
   -MONGO_URI
   -PORT
