@@ -5,9 +5,12 @@ A MERN stack application for tracking and managing expenses.
 ## Features
 
 - User authentication (signup, login, logout)
+- manage expenses
 - Add, edit, delete expenses
-- Categorize expenses
 - Budget management
+- Add, edit, delete budget
+  
+
 
 ## Technologies Used
 
