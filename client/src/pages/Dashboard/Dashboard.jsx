@@ -4,6 +4,7 @@ import styles from "./Dashboard.module.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import EditIcon from "@mui/icons-material/Edit";
+let token = localStorage.getItem("token");
 
 const Dashboard = () => {
   const [totalIncom, setTotalIncom] = useState("");
@@ -12,7 +13,9 @@ const Dashboard = () => {
   const { userId } = useContext(AuthContext);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8000/api/expense");
+      const response = await axios.get("http://localhost:8000/api/expense", {
+        headers: { Authorization: token },
+      });
       const expenses = response.data;
       const totalAmount = expenses.reduce((sum, item) => sum + item.amount, 0);
       setTotalSpend(totalAmount);
@@ -66,7 +69,9 @@ const Dashboard = () => {
           <p>${totalSpend}</p>
         </div>
       </div>
-      <ExpenseChart />
+      <div className={styles.expenseChart}>
+        <ExpenseChart />
+      </div>
     </div>
   );
 };

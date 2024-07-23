@@ -1,14 +1,14 @@
 const Budget = require("../models/Budget");
 
 exports.addBudget = async (req, res) => {
-  const { amount, category, user } = req.body;
+  const { amount, category } = req.body;
   try {
     const budget = new Budget({
-      user,
+      user: req.user.id,
       category,
       amount,
     });
-    console.log(budget);
+    // console.log(budget);
     await budget.save();
     res.status(201).json(budget);
   } catch (err) {
@@ -18,11 +18,9 @@ exports.addBudget = async (req, res) => {
 
 // { user: req.user.id }
 exports.getBudgets = async (req, res) => {
-  console.log(req.headers.authorization);
+  // console.log(req.headers.authorization);
   try {
-    const budget = await Budget.find().sort({
-      date: -1,
-    });
+    const budget = await Budget.find({ user: req.user.id });
     res.json(budget);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -63,3 +61,7 @@ exports.deleteBudget = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// exports.autherizationText=async(res,req)=>{
+
+// }

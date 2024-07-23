@@ -8,9 +8,9 @@ const {
 } = require("../controllers/BudgetController");
 const authMiddleware = require("../middleware/authMiddleware");
 
-router.post("/", addBudget);
-router.get("/", getBudgets);
-router.put("/:id", updateBudget);
-router.delete("/:id", deleteBudget);
+router.post("/", authMiddleware, addBudget);
+router.get("/", authMiddleware, getBudgets);
+router.put("/:id", authMiddleware, updateBudget);
+router.delete("/:id", authMiddleware, deleteBudget);
 
 module.exports = router;

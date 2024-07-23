@@ -2,13 +2,16 @@ import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 let BASE_URL = "http://localhost:8000/api";
 
+let token = localStorage.getItem("token");
 const ExpenseContext = createContext();
 // console.log(token);
 const ExpenseProvider = ({ children }) => {
   const [expenses, setExpenses] = useState([]);
   const fetchExpenses = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/expense`);
+      const response = await axios.get(`${BASE_URL}/expense`, {
+        headers: { Authorization: token },
+      });
       setExpenses(response.data);
       // console.log(expenses);
     } catch (error) {
@@ -21,7 +24,9 @@ const ExpenseProvider = ({ children }) => {
 
   const addExpense = async (newExpense) => {
     try {
-      await axios.post(`${BASE_URL}/expense`, newExpense);
+      await axios.post(`${BASE_URL}/expense`, newExpense, {
+        headers: { Authorization: token },
+      });
       fetchExpenses();
       // console.log(newExpense);
     } catch (error) {
@@ -32,7 +37,9 @@ const ExpenseProvider = ({ children }) => {
   const editExpense = async (id, updatedExpense) => {
     try {
       // console.log(id, updatedExpense);
-      await axios.put(`${BASE_URL}/expense/${id}`, updatedExpense);
+      await axios.put(`${BASE_URL}/expense/${id}`, updatedExpense, {
+        headers: { Authorization: token },
+      });
       fetchExpenses();
     } catch (error) {
       console.error("Error editing expense:", error);
@@ -41,7 +48,9 @@ const ExpenseProvider = ({ children }) => {
 
   const deleteExpense = async (id) => {
     try {
-      await axios.delete(`${BASE_URL}/expense/${id}`);
+      await axios.delete(`${BASE_URL}/expense/${id}`, {
+        headers: { Authorization: token },
+      });
       fetchExpenses();
     } catch (error) {
       console.error("Error deleting expense:", error);

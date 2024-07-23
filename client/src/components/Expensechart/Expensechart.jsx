@@ -1,14 +1,27 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const ExpenseChart = () => {
-  const [chartData, setChartData] = useState([]);
+  const [chartData, setChartData] = useState({});
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/expense");
+        const response = await axios.get("http://localhost:8000/api/expense", {
+          headers: { Authorization: token },
+        });
         const expenses = response.data;
 
         const categoryTotals = expenses.reduce((acc, expense) => {
@@ -20,10 +33,16 @@ const ExpenseChart = () => {
           return acc;
         }, {});
 
-        const formattedData = Object.keys(categoryTotals).map((key) => ({
-          category: key,
-          amount: categoryTotals[key],
-        }));
+        const formattedData = {
+          labels: Object.keys(categoryTotals),
+          datasets: [
+            {
+              label: "Amount",
+              data: Object.values(categoryTotals),
+              backgroundColor: "rgba(136, 132, 216, 0.6)",
+            },
+          ],
+        };
 
         setChartData(formattedData);
       } catch (error) {
@@ -32,28 +51,38 @@ const ExpenseChart = () => {
     };
 
     fetchExpenses();
-  });
+  }, [token]);
 
   return (
-    <div>
+    <>
       <h3
         style={{ textAlign: "center", marginBottom: "40px", marginTop: "30px" }}
       >
         Expense by Category
       </h3>
-      <BarChart
-        width={600}
-        height={300}
-        data={chartData}
-        style={{ margin: "auto" }}
+      <div
+        style={{
+          height: "290px",
+          width: "80%",
+          marginLeft: "auto",
+        }}
       >
-        <XAxis dataKey="category" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="amount" fill="#8884d8" />
-      </BarChart>
-    </div>
+        {chartData && chartData.labels ? (
+          <Bar
+            data={chartData}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: { display: true, position: "top" },
+                tooltip: { enabled: true },
+              },
+            }}
+          />
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+    </>
   );
 };
 

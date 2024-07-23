@@ -65,7 +65,16 @@ const Budget = () => {
                       {value.spend} Spend
                     </div>
                     <div className={styles.budgetRemaining}>
-                      {budget.amount - value.spend} Remaining
+                      {budget.amount >= value.spend ? (
+                        <p>
+                          {budget.amount - value.spend}
+                          <span style={{ marginLeft: "5px" }}>Remaining</span>
+                        </p>
+                      ) : (
+                        <p style={{ color: "red", display: "inline" }}>
+                          {budget.amount - value.spend} over budget
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

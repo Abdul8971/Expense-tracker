@@ -71,7 +71,6 @@ function AddExpense() {
             type="date"
             className={styles.input}
             value={date}
-            required
             onChange={(e) => setDate(e.target.value)}
           />
           <div>

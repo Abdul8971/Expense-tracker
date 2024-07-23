@@ -87,10 +87,12 @@ function Expenses() {
                   <td className={styles.td}>{expense.amount}</td>
                   <td className={styles.dtDescription}>
                     <details>{expense.description}</details>
-                    <summary>{expense.description.slice(0, 30)}</summary>
+                    <summary>{expense.description.slice(0, 20)}</summary>
                   </td>
                   <td className={styles.td}>
-                    {expense.date.slice(0, 10).split("-").reverse().join("-")}
+                    {expense.date
+                      ? expense.date.slice(0, 10).split("-").reverse().join("-")
+                      : "No Date"}
                   </td>
                   <td className={styles.td}>
                     <button className={styles.edit}>

@@ -2,11 +2,11 @@ const Expense = require("../models/Expense");
 const User = require("../models/User");
 
 exports.addExpense = async (req, res) => {
-  const { date, amount, category, description, user } = req.body;
+  const { date, amount, category, description } = req.body;
 
   try {
     const expense = new Expense({
-      user,
+      user: req.user.id,
       date,
       amount,
       category,
@@ -19,12 +19,13 @@ exports.addExpense = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-console.log("a");
 
 exports.getExpenses = async (req, res) => {
+  // console.log(req.user);
   try {
     // const a = await Expense.find();
-    const expenses = await Expense.find();
+    const expenses = await Expense.find({ user: req.user.id });
+    // console.log(expenses);
     res.json(expenses);
   } catch (err) {
     console.error("Error fetching expenses:", err.message);
