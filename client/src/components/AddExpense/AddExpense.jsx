@@ -12,11 +12,9 @@ function AddExpense() {
   const [date, setDate] = useState("");
   // const { userId, setUserId } = useContext(AuthContext);
   const navigate = useNavigate();
-  let userId = localStorage.getItem("user");
   const handleSubmit = async (e) => {
     e.preventDefault();
     const expenseData = {
-      user: userId,
       category,
       amount,
       description,

@@ -5,11 +5,9 @@ import { BudgetContext } from "../../context/BudgetContext";
 
 function AddBudget() {
   const { budget, addBudget } = useContext(BudgetContext);
-  let userId = localStorage.getItem("user");
 
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    user: userId,
     category: "",
     amount: "",
   });
